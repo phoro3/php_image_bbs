@@ -1,0 +1,18 @@
+<phpunit bootstrap="vendor/autoload.php" colors="true">
+    <testsuites>
+        <testsuite name="SlimSkeleton">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <server name='HTTP_HOST' value='http://localhost' />
+    </php>
+    <logging>
+        <log type="coverage-clover" taget="build/logs/clover.xml"/>
+    </logging>
+    <filter>
+        <whitelist>
+            <directory>src/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
