@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/phoro3/php_image_bbs.svg?branch=master)](https://travis-ci.org/phoro3/php_image_bbs)
+[![Coverage Status](https://coveralls.io/repos/github/phoro3/php_image_bbs/badge.svg?branch=)](https://coveralls.io/github/phoro3/php_image_bbs?branch=)
+
 # ‰æ‘œ‚Â‚«‚ÌŒfŽ¦”Â
 
 ## ‹@”\
