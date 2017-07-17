@@ -26,6 +26,7 @@
         "psr-4": {
             "MyApp\\": "src/",
             "MyApp\\model\\": "src/model/",
+            "MyApp\\controller\\": "src/controller/",
             "Tests\\": "tests/"
         }
     },
