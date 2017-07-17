@@ -1,6 +1,7 @@
 <?php
 // DIC configuration
 
+
 $container = $app->getContainer();
 
 // view renderer
@@ -16,4 +17,9 @@ $container['logger'] = function ($c) {
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
+};
+
+$container[MyApp\controller\Root::class] =
+    function($container){
+        return new MyApp\controller\Root($container);
 };

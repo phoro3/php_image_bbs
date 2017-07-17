@@ -1,9 +1,10 @@
 <?php
 // Routes
 
-$app->get('/', function ($request, $response, $args) {
-    return $this->renderer->render($response, 'index.php', $args);
-});
+$app->get('/', MyApp\controller\Root::class . ':showComment');
+
+$app->get('/comment/add', MyApp\controller\Root::class . ':addComment');
+
 
 $app->get('/css/{filename}', function($request, $response, $args){
     $newResponse = $response->withHeader('Content-type', 'text/css');
