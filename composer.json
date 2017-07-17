@@ -25,6 +25,7 @@
     "autoload-dev": {
         "psr-4": {
             "MyApp\\": "src/",
+            "MyApp\\model\\": "src/model/",
             "Tests\\": "tests/"
         }
     },
