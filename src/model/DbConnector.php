@@ -11,7 +11,9 @@ class DbConnector{
                 $dsn = $settings['dsn'];
                 $user = $settings['user'];
                 $pass = $password['password'];
-                $pdo = new \PDO($dsn, $user, $pass);
+                $option = array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                    \PDO::ATTR_EMULATE_PREPARES => false);
+                $pdo = new \PDO($dsn, $user, $pass, $option);
 
                 return $pdo;
             }catch(\PDOException $e){
