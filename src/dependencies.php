@@ -1,6 +1,5 @@
 <?php
-// DIC configuration
-
+use MyApp\model\DbConnector;
 
 $container = $app->getContainer();
 
@@ -19,3 +18,12 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
+//database
+$container['db'] = function ($c) {
+    $filename = __DIR__ . '/../conf/ini/database.ini';
+    $passwordFilename = __DIR__ . '/../conf/ini/password.ini';
+    $connector = new DbConnector();
+    $pdo = $connector->connect($filename, $passwordFilename);
+    var_dump($pdo);
+    return $pdo;
+};
