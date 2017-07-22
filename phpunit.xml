@@ -14,7 +14,11 @@
         <whitelist>
             <directory>src/</directory>
             <exclude>
-                <directory>srt/model</directory>
+                <directory>src/model</directory>
+                <file>src/middleware.php</file>
+                <file>src/dependencies.php</file>
+                <file>src/route.php</file>
+                <file>src/settings.php</file>
             </exclude>
         </whitelist>
     </filter>
