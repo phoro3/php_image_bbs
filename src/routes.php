@@ -1,7 +1,7 @@
 <?php
-// Routes
+use MyApp\controller\Root;
 
-$app->get('/', MyApp\controller\Root::class . ':showComment');
+$app->get('/', Root::class . ':showComment');
 
 $app->get('/comment/add', MyApp\controller\Root::class . ':addComment');
 

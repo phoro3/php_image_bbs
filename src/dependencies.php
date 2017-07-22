@@ -19,7 +19,3 @@ $container['logger'] = function ($c) {
     return $logger;
 };
 
-$container[MyApp\controller\Root::class] =
-    function($container){
-        return new MyApp\controller\Root($container);
-};

@@ -3,10 +3,10 @@ namespace MyApp\controller;
 use \Interop\Container\ContainerInterface as ContainerInterface;
 
 class Root{
-    protected $container;
+    protected $app;
 
-    public function __construct(ContainerInterface $container){
-        $this->container = $container;
+    public function __construct($app){
+        $this->app = $app;
     }
 
     public function showComment($request, $response, $args){
@@ -23,11 +23,11 @@ class Root{
             $comments = $commentModel->fetchAllComments($pdo);
 
             $args['comments'] = $comments;
-            $this->container['renderer']->render($response, 'index.php', $args);
+            $this->app->renderer->render($response, 'index.php', $args);
         }catch(\PDOException $e){
-            $this->container['logger']->addError($e->getMessage());
+            $this->logger->addError($e->getMessage());
             $args['errorMessage'] = 'エラーが発生しました';
-            $this->container['renderer']->render($response, 'error.php', $args);
+            $this->app->renderer->render($response, 'error.php', $args);
         }
     }
 }
