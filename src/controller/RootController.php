@@ -19,7 +19,7 @@ class RootController{
             $args['comments'] = $comments;
             return $this->container->renderer->render($response, 'index.php', $args);
         }catch(\PDOException $e){
-            $this->logger->addError($e->getMessage());
+            $this->container->logger->addError($e->getMessage());
             $args['errorMessage'] = 'エラーが発生しました';
             return $this->container->renderer->render($response, 'error.php', $args);
         }
