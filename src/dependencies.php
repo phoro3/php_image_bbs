@@ -24,6 +24,5 @@ $container['db'] = function ($c) {
     $passwordFilename = __DIR__ . '/../conf/ini/password.ini';
     $connector = new DbConnector();
     $pdo = $connector->connect($filename, $passwordFilename);
-    var_dump($pdo);
     return $pdo;
 };
