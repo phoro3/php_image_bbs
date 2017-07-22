@@ -6,5 +6,8 @@
     </head>
     <body>
         <h1>掲示板</h1>
+        <?php foreach($comments as $c){ ?>
+            <p><?= $c['comment'] ?></p>    
+        <?php } ?>
     </body>
 </html>

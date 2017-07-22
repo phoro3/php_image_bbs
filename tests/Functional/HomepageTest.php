@@ -7,12 +7,12 @@ class HomepageTest extends BaseTestCase
     /**
      * Test that the index route returns a response
      */
-    public function testGetHomepageWithoutName()
-    {
-        $response = $this->runApp('GET', '/');
+    //public function testGetHomepageWithoutName()
+    //{
+    //    $response = $this->runApp('GET', '/');
 
-        $this->assertEquals(200, $response->getStatusCode());
-    }
+    //    $this->assertEquals(200, $response->getStatusCode());
+    //}
 
 
     /**

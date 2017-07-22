@@ -1,5 +1,5 @@
 <?php
-// DIC configuration
+use MyApp\model\DbConnector;
 
 $container = $app->getContainer();
 
@@ -16,4 +16,13 @@ $container['logger'] = function ($c) {
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
+};
+
+//database
+$container['db'] = function ($c) {
+    $filename = __DIR__ . '/../conf/ini/database.ini';
+    $passwordFilename = __DIR__ . '/../conf/ini/password.ini';
+    $connector = new DbConnector();
+    $pdo = $connector->connect($filename, $passwordFilename);
+    return $pdo;
 };
