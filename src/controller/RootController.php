@@ -13,8 +13,8 @@ class RootController{
         $args = array();
         try{
             //Fetch comment data
-            $commentModel = new \MyApp\model\Comments();
-            $comments = $commentModel->fetchAllComments($this->app->db);
+            $commentModel = new \MyApp\model\Comments($this->app->db);
+            $comments = $commentModel->fetchAllComments();
 
             $args['comments'] = $comments;
             $this->app->renderer->render($response, 'index.php', $args);
