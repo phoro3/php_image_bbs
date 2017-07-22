@@ -1,10 +1,7 @@
 <?php
-use MyApp\controller\Root;
+use MyApp\controller\RootController;
 
-$app->get('/', Root::class . ':showComment');
-
-$app->get('/comment/add', MyApp\controller\Root::class . ':addComment');
-
+$app->get('/', RootController::class . ':showComment');
 
 $app->get('/css/{filename}', function($request, $response, $args){
     $newResponse = $response->withHeader('Content-type', 'text/css');

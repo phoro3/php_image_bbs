@@ -2,7 +2,7 @@
 namespace MyApp\controller;
 use \Interop\Container\ContainerInterface as ContainerInterface;
 
-class Root{
+class RootController{
     protected $app;
 
     public function __construct($app){
