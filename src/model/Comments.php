@@ -7,6 +7,10 @@ class Comments{
         $this->pdo = $pdo;
     }
 
+    /**
+     * fetch all comments which are not deleted
+     * @return {array} comments
+     */
     public function fetchAllComments(){
         try{
             $stmt = $this->pdo->prepare('SELECT * FROM comments WHERE delete_flag = 0');
