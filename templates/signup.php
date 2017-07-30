@@ -8,7 +8,7 @@
         <h1>掲示板</h1>
         <p><?= $errorMessage ?></p>
         <form action="/signup/add" method="POST">
-            <p>ID：<input type="text" name="user_id"></p>
+            <p>ID：<input type="text" name="userId"></p>
             <p>パスワード：<input type="password" name="password"></p>
             <p>ニックネーム：<input type="text" name="name"></p>
             <p><input type="submit" value="登録"></p>
