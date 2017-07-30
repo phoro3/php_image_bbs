@@ -1,38 +1,12 @@
 <?php
+namespace Tests\controller;
+
 use MyApp\controller\RootController;
 use MyApp\model\Comments;
-use Slim\App;
+use Tests\controller\BaseClass;
 use Slim\Http\Response;
-use Slim\Views\PhpRenderer;
 
-class RootControllerTest extends \PHPUnit_Framework_TestCase{
-    private $container;
-
-    public function setUp(){
-        $settings = require __DIR__ . '/../../src/settings.php';
-        $app = new App($settings);
-
-        $this->container = $app->getContainer();
-        $this->container['db'] = function($c){
-            $pdoMock = \Mockery::mock(\PDO::class);
-            return $pdoMock;
-        };
-        $this->container['renderer'] = function ($c) {
-            $settings = $c->get('settings')['renderer'];
-            return new PhpRenderer($settings['template_path']);
-        };
-        $this->container['logger'] = function ($c) {
-            $settings = $c->get('settings')['logger'];
-            $logger = new Monolog\Logger($settings['name']);
-            $logger->pushProcessor(new Monolog\Processor\UidProcessor());
-            $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
-            return $logger;
-        };
-    }
-
-    public function tearDown(){
-        Mockery::close();
-    }
+class RootControllerTest extends BaseClass{
 
     public function testShowCommentWhenException(){
         //Test when exception happens
