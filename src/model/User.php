@@ -27,12 +27,12 @@ class User{
 
     /**
      * search user whose id is same as $userId
-     * @param {string} $name
+     * @param {string} $userId
      * @return {array} user
      */
-    public function searchUserByName($userId){
+    public function searchUserById($userId){
         try{
-            $stmt = $this->pdo->prepare('SELECT user_id FROM users WHERE user_id = :user_id');
+            $stmt = $this->pdo->prepare('SELECT user_id, password, name FROM users WHERE user_id = :user_id');
             $stmt->bindValue(':user_id', $userId, \PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetchAll();
