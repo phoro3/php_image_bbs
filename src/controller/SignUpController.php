@@ -43,11 +43,8 @@ class SignUpController{
                 }else{
                     $userModel->insertUser($userId, $password, $name);
 
-                    $commentModel = new \MyApp\model\Comments($this->container->db);
-                    $comments = $commentModel->fetchAllComments();
+                    return $response->withStatus(302)->withHeader('Location', '/');
 
-                    $args['comments'] = $comments;
-                    return $this->container->renderer->render($response, 'index.php', $args);
                 }
             }catch(\PDOException $e){
                 $args['errorMessage'] = 'エラーが発生しました';
