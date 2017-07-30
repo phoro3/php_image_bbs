@@ -43,12 +43,8 @@ class SignUpControllerTest extends BaseClass{
         $userMock
             ->shouldReceive('insertUser')
             ->with($params['userId'], $params['password'], $params['name']);
-        $commentMock = \Mockery::mock('overload:' . Comments::class);
-        $commentMock
-            ->shouldReceive('fetchAllComments')
-            ->andReturn($comments);
         $response = $controller->addUser($request, new Response(), null);
-        $this->assertContains($comments[0]['comment'], (string)$response->getBody(), 'fail at normal case');
+        $this->assertEquals(302, $response->getStatusCode());
     }
 
     /**
@@ -185,27 +181,5 @@ class SignUpControllerTest extends BaseClass{
         $response = $controller->addUser($request, new Response(), null);
         $this->assertContains('エラーが発生しました', (string)$response->getBody(), 'fail at exception test');
         \Mockery::close();
-
-        //Exception at fetchAllComments
-        $request = Request::createFromEnvironment($environment);
-        $params = array(
-            'userId' => 'test',
-            'password' => 'test',
-            'name' => 'test'
-        );
-        $request = $request->withParsedBody($params);
-        $userMock = \Mockery::mock('overload:' . User::class);
-        $userMock
-            ->shouldReceive('searchUserByName')
-            ->with($params['userId']);
-        $userMock
-            ->shouldReceive('insertUser')
-            ->with($params['userId'], $params['password'], $params['name']);
-        $commentMock = \Mockery::mock('overload:' . Comments::class);
-        $commentMock
-            ->shouldReceive('fetchAllComments')
-            ->andThrow(new \PDOException());
-        $response = $controller->addUser($request, new Response(), null);
-        $this->assertContains('エラーが発生しました', (string)$response->getBody(), 'fail at exception test');
     }
 }
