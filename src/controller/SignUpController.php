@@ -11,9 +11,10 @@ class SignUpController{
     }
 
     public function addUser($request, $response, $args){
-        $userId = filter_input(INPUT_POST, 'user_id');
-        $password = filter_input(INPUT_POST, 'password');
-        $name = filter_input(INPUT_POST, 'name');
+        $params = $request->getParsedBody();
+        $userId = $params['userId'];
+        $password = $params['password'];
+        $name = $params['name'];
 
         if(!($userId and $password and $name)){
             $args['errorMessage'] = '全ての項目を入力してください';
