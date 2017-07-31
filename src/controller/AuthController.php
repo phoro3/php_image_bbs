@@ -2,6 +2,7 @@
 namespace MyApp\controller;
 
 use MyApp\model\User;
+use MyApp\logic\AuthLogic;
 
 class AuthController{
     protected $container;
@@ -20,18 +21,13 @@ class AuthController{
 
         try{
             $userModel = new User($this->container->db);
-            $user = $userModel->searchUserById($userId)[0];
+            $auth = new AuthLogic();
 
-            var_dump($user);
-            var_dump($password);
-            if($user['password'] === $password){
-                $_SESSION['userId'] = $user['userId'];
-                $_SESSION['name'] = $user['name'];
-                $_SESSION['isLogin'] = true;
+            if($auth->isLogin($userModel, $userId, $password)){
                 return $response->withStatus(302)->withHeader('Location', '/');
             }else{
                 $args['errorMessage'] = 'ユーザーIDまたはパスワードが違います';
-                return $this->container->renderer->render($response, 'error.php', $args);
+                return $this->container->renderer->render($response, 'login.php', $args);
             }
         }catch(\PDOException $e){
             $args['errorMessage'] = 'エラーが発生しました';
