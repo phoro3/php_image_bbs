@@ -36,6 +36,7 @@ class RootControllerTest extends BaseClass{
             ->andReturn($expectedArray);
 
         $controller = new RootController($this->container);
+        $_SESSION['name'] = 'test';
         $response = $controller->showComment(null, new Response(), null);
         $this->assertContains('test comment', (string)$response->getBody());
     }
