@@ -121,10 +121,18 @@ class AuthControllerTest extends BaseClass{
         );
         $request = Request::createFromEnvironment($environment);
 
+        //When 'isLogin' is true
         $_SESSION['isLogin'] = true;
         $this->assertTrue($_SESSION['isLogin']);
         $response = $controller->logout($request, new Response(), null);
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertFalse($_SESSION['isLogin']);
+
+        //When 'isLogin' is false
+        $_SESSION['isLogin'] = false;
+        $this->assertFalse($_SESSION['isLogin']);
+        $response = $controller->logout($request, new Response(), null);
+        $this->assertFalse($_SESSION['isLogin']);
+        $this->assertContains('エラーが発生しました', (string)$response->getBody());
     }
 }

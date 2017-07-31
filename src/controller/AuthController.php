@@ -47,6 +47,9 @@ class AuthController{
         if($_SESSION['isLogin']){
             $_SESSION['isLogin'] = false;
             return $response->withStatus(302)->withHeader('Location', '/login');
+        }else{
+            $args['errorMessage'] = 'エラーが発生しました';
+            return $this->container->renderer->render($response, 'error.php', $args);
         }
     }
 }
