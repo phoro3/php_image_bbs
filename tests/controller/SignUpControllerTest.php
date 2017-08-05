@@ -38,7 +38,7 @@ class SignUpControllerTest extends BaseClass{
         //Create mocks
         $userMock = \Mockery::mock('overload:' . User::class);
         $userMock
-            ->shouldReceive('searchUserByName')
+            ->shouldReceive('searchUserById')
             ->with($params['userId']);
         $userMock
             ->shouldReceive('insertUser')
@@ -126,7 +126,7 @@ class SignUpControllerTest extends BaseClass{
         //Create Mock
         $userMock = \Mockery::mock('overload:' . User::class);
         $userMock
-            ->shouldReceive('searchUserByName')
+            ->shouldReceive('searchUserById')
             ->with($params['userId'])
             ->andReturn(array(1));
         $response = $controller->addUser($request, new Response(), null);
@@ -155,7 +155,7 @@ class SignUpControllerTest extends BaseClass{
         $request = $request->withParsedBody($params);
         $userMock = \Mockery::mock('overload:' . User::class);
         $userMock
-            ->shouldReceive('searchUserByName')
+            ->shouldReceive('searchUserById')
             ->with($params['userId'])
             ->andThrow(new \PDOException(''));
         $response = $controller->addUser($request, new Response(), null);
@@ -172,7 +172,7 @@ class SignUpControllerTest extends BaseClass{
         $request = $request->withParsedBody($params);
         $userMock = \Mockery::mock('overload:' . User::class);
         $userMock
-            ->shouldReceive('searchUserByName')
+            ->shouldReceive('searchUserById')
             ->with($params['userId']);
         $userMock
             ->shouldReceive('insertUser')

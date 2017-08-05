@@ -35,7 +35,7 @@ class SignUpController{
             try{
                 $userModel = new User($this->container->db);
 
-                $sameNameUser = $userModel->searchUserByName($userId);
+                $sameNameUser = $userModel->searchUserById($userId);
                 if(count($sameNameUser) > 0){
                     //When userId exists
                     $args['errorMessage'] = 'IDが重複しています';
