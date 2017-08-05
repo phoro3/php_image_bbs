@@ -13,6 +13,8 @@ class AuthControllerTest extends BaseClass{
 
     /**
      * Test for login with normal case
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testLogin(){
         $controller = new AuthController($this->container);
@@ -32,7 +34,6 @@ class AuthControllerTest extends BaseClass{
         $request = $request->withParsedBody($params);
 
         //Create Mock
-        $userMock = \Mockery::mock('overload:' . User::class);
         $authMock = \Mockery::mock('overload:' . AuthLogic::class);
         $authMock
             ->shouldReceive('isLogin')
@@ -43,6 +44,8 @@ class AuthControllerTest extends BaseClass{
 
     /**
      * Test for login when invalid inputs are given
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testLoginWithInvalidArgument(){
         $controller = new AuthController($this->container);
@@ -72,7 +75,6 @@ class AuthControllerTest extends BaseClass{
         );
         $request = $request->withParsedBody($params);
         //Create Mock
-        $userMock = \Mockery::mock('overload:' . User::class);
         $authMock = \Mockery::mock('overload:' . AuthLogic::class);
         $authMock
             ->shouldReceive('isLogin')
@@ -83,6 +85,8 @@ class AuthControllerTest extends BaseClass{
 
     /**
      * Test for login when excepiton happens
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testLoginWithException(){
         $controller = new AuthController($this->container);
@@ -102,7 +106,6 @@ class AuthControllerTest extends BaseClass{
         $request = $request->withParsedBody($params);
 
         //Create Mock
-        $userMock = \Mockery::mock('overload:' . User::class);
         $authMock = \Mockery::mock('overload:' . AuthLogic::class);
         $authMock
             ->shouldReceive('isLogin')
@@ -111,6 +114,9 @@ class AuthControllerTest extends BaseClass{
         $this->assertContains('エラーが発生しました', (string)$response->getBody());
     }
 
+    /**
+     * Test for logout
+     */
     public function testLogout(){
         $controller = new AuthController($this->container);
         $environment = Environment::mock(
