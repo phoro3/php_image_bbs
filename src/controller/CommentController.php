@@ -15,7 +15,7 @@ class CommentController{
         $params = $request->getParsedBody();
         $comment = $params['comment'];
 
-        if($comment){
+        if(!empty($comment)){
             try{
                 $userModel = new User($this->container->db);
                 //Get user num id from userId
