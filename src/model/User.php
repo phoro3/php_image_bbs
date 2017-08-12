@@ -40,4 +40,22 @@ class User{
             throw $e;
         }
     }
+
+    /**
+     * search user num id from $userId
+     * @param {string} $userId
+     * @return {integer} user num id
+     */
+    public function searchUserNumIdById($userId){
+        try{
+            $stmt = $this->pdo->prepare('SELECT id FROM users WHERE user_id = :user_id');
+            $stmt->bindValue(':user_id', $userId);
+            $stmt->execute();
+            $row = $stmt->fetch();
+            $userNumId = $row['id'];
+            return $userNumId;
+        }catch(\PDOException $e){
+            throw $e;
+        }
+    }
 }

@@ -14,7 +14,7 @@ class AuthLogic{
         }
 
         if($user['password'] === $password){
-            $_SESSION['userId'] = $user['userId'];
+            $_SESSION['userId'] = $userId;
             $_SESSION['name'] = $user['name'];
             $_SESSION['isLogin'] = true;
             return true;

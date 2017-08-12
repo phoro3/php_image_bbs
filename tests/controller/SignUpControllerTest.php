@@ -13,6 +13,8 @@ class SignUpControllerTest extends BaseClass{
 
     /**
      * Test for addUser with normal case
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testAddUser(){
         $controller = new SignUpController($this->container);
@@ -49,6 +51,8 @@ class SignUpControllerTest extends BaseClass{
 
     /**
      * Test for addUser when invalid inputs are given
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testAddUserWithInvalidInput(){
         $controller = new SignUpController($this->container);
@@ -135,6 +139,8 @@ class SignUpControllerTest extends BaseClass{
 
     /**
      * Test addUser when exception happens
+     * @runInSeparateProcess
+     * @preserveGlobalState disabled
      */
     public function testAddUserWithException(){
         $controller = new SignUpController($this->container);
