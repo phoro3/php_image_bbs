@@ -2,6 +2,7 @@
 use MyApp\controller\RootController;
 use MyApp\controller\SignUpController;
 use MyApp\controller\AuthController;
+use MyApp\controller\CommentController;
 use MyApp\middleware\LoginMiddleware;
 
 $app->get('/', RootController::class . ':showComment')
@@ -17,6 +18,8 @@ $app->get('/login', function($request, $response, $args){
 });
 $app->post('/login/auth', AuthController::class . ':login');
 $app->get('/logout', AuthController::class . ':logout');
+
+$app->post('/comment/add', CommentController::class . ':addComment');
 
 $app->get('/css/{filename}', function($request, $response, $args){
     $newResponse = $response->withHeader('Content-type', 'text/css');
