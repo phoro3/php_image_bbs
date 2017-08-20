@@ -26,3 +26,7 @@ $app->get('/css/{filename}', function($request, $response, $args){
     return $this->renderer->render($newResponse, 'css/' . $args['filename'] . '.css');
 });
 
+$app->get('/img/{filename}', function($request, $response, $args){
+    $newResponse = $response->withHeader('Content-type', 'image/jpeg');
+    return $this->renderer->render($newResponse, 'img/default.jpg');
+});
