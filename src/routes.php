@@ -28,5 +28,5 @@ $app->get('/css/{filename}', function($request, $response, $args){
 
 $app->get('/img/{filename}', function($request, $response, $args){
     $newResponse = $response->withHeader('Content-type', 'image/jpeg');
-    return $this->renderer->render($newResponse, 'img/default.jpg');
+    return $this->renderer->render($newResponse, 'img/' . $args['filename'] .'.jpg');
 });
