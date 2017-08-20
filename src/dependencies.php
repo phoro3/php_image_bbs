@@ -26,3 +26,6 @@ $container['db'] = function ($c) {
     $pdo = $connector->connect($filename, $passwordFilename);
     return $pdo;
 };
+
+//upload path
+$container['uploaded_directory'] = __DIR__ . '\..\templates\img';
