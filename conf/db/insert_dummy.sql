@@ -4,7 +4,7 @@ INSERT INTO users(user_id, password, name) VALUES('sakaki', 'test', '坂木');
 
 INSERT INTO comments(user_id, comment) VALUES(1, 'おはよう！');
 INSERT INTO comments(parent_comment_id, user_id, comment) VALUES(1, 2, 'おはよう！');
-INSERT INTO comments(user_id, comment) VALUES(2, 'おやすみ！');
+INSERT INTO comments(user_id, comment, image_path) VALUES(2, 'おやすみ！', 'default');
 INSERT INTO comments(user_id, comment) VALUES(1, 'いってきます！');
 INSERT INTO comments(user_id, comment) VALUES(3, 'いってらっしゃい！');
 INSERT INTO comments(user_id, comment) VALUES(1, 'ただいま！');
