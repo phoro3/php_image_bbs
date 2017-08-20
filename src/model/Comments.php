@@ -13,7 +13,11 @@ class Comments{
      */
     public function fetchAllComments(){
         try{
-            $stmt = $this->pdo->prepare('SELECT * FROM comments WHERE delete_flag = 0');
+            $stmt = $this->pdo->prepare('SELECT c.comment, u.name, c.image_path 
+                FROM comments AS c
+                JOIN users AS u
+                ON c.user_id = u.id
+                WHERE c.delete_flag = 0');
             $stmt->execute();
             return $stmt->fetchAll();
         }catch(\PDOException $e){

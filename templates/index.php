@@ -15,7 +15,13 @@
         </form>
         <h1>投稿一覧</h1>
         <?php foreach($comments as $c){ ?>
-            <p><?= $c['comment'] ?></p>    
+            <p>
+                <?= $c['comment'] ?>
+                <?php if (empty($c['image_path']) === false) { ?>
+                    <img src="<?= $c['image_path'] ?>">
+                <?php } ?>
+            </p>    
+            <p>投稿者：<?= $c['name'] ?></p>
         <?php } ?>
     </body>
 </html>
