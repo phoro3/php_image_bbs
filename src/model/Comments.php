@@ -30,11 +30,12 @@ class Comments{
      * @param {integer} $userNumId
      * @param {string} $comment
      */
-    public function insertComment($userNumId, $comment){
+    public function insertComment($userNumId, $comment, $filename){
         try{
-            $stmt = $this->pdo->prepare('INSERT INTO comments(user_id, comment) VALUES(:user_id, :comment)');
+            $stmt = $this->pdo->prepare('INSERT INTO comments(user_id, comment, image_path) VALUES(:user_id, :comment, :filename)');
             $stmt->bindValue(':user_id', $userNumId, \PDO::PARAM_INT);
             $stmt->bindValue(':comment', $comment, \PDO::PARAM_STR);
+            $stmt->bindValue(':filename', $filename, \PDO::PARAM_STR);
             $stmt->execute();
         }catch(\PDOException $e){
             throw $e;
