@@ -18,7 +18,7 @@
             <p>
                 <?= $c['comment'] ?>
                 <?php if (empty($c['image_path']) === false) { ?>
-                    <img src="<?= $c['image_path'] ?>">
+                <img src="img/<?= $c['image_path'] ?>" width="100" height="100">
                 <?php } ?>
             </p>    
             <p>投稿者：<?= $c['name'] ?></p>
